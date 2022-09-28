@@ -1,7 +1,8 @@
 name: getx_translator
-description: A sample command-line application.
+description: A command-line application for generating language strings file for Getx Flutter. Easy translation with google sheet for Getx.
 version: 1.0.0
-# homepage: https://www.example.com
+homepage: https://github.com/bikram0000/getx_translator
+repository: https://github.com/bikram0000/getx_translator
 
 environment:
   sdk: '>=2.17.6 <3.0.0'
@@ -11,7 +12,6 @@ dependencies:
   yaml: ^3.1.1
   args: ^2.3.1
   logger: ^1.1.0
-  console_bars: ^1.0.5
 
 
 dev_dependencies:
