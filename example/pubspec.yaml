@@ -35,9 +35,9 @@ dev_dependencies:
 getx_translator:
   path: "lib"
   output_path: "assets/language"
-  sheet_url: "https://script.google.com/macros/s/AKfycbwSnBW7NeRWV3vy9i7U8sX8RPyPkC2S8UGYbnehlOKMT5ueJNfwelsJogWTEitnqg8X7g/exec"
+  sheet_url: "https://script.google.com/macros/s/AKfycbybsu-IUSldP-3wZfYTl4Zz5ZV5IMZMpzWKE3-1UzYPuXGxNNnpYQMZbl26pJ4-U-a9/exec"
   sheet_name: "Sheet1"
-  sheet_id: "16gg_KvyPgXYrKzt12JtIZm4DVgNkxarzVlRHfXMyy5Y"
+  sheet_id: "1fx1hGEEHXuuD8Fq9NZ_vubsdvu7mOslh6IW_5YY1x8Y"
 
 
 

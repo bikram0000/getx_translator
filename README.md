@@ -6,6 +6,8 @@
 
 A command-line application for generating language strings file for Getx Flutter. Easy translation with google sheet for Getx.
 
+you need to make your sheet look like this [getx_translator_sheet](https://docs.google.com/spreadsheets/d/1fx1hGEEHXuuD8Fq9NZ_vubsdvu7mOslh6IW_5YY1x8Y/edit?usp=sharing) your strings should start from 3rd row.
+
 Go to google sheets and make an Apps script file past this code with replacing you sheet id and sheet name, you can get sheet id from sheet url.
 ```dart
 function doPost(request) {
@@ -133,12 +135,12 @@ getx_translator:
   sheet_id: "16gg_KvyPgXYrKzt12JtIZm4DVgNkxarzVlRHfXMyy5Y"
 ```
 
-Run this code for :: Scanning ... Generating.. Uploading...  Strings.
+Run this code for :: Scanning ... Generating.. Uploading... and removing old Strings.
 ```dart
 flutter pub run getx_translator:main
 ```
 
-Run this code for getting key and update language files.
+Run this code after you generate translation and update language files.
 ```dart
 flutter pub run getx_translator:update
 ```

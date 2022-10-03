@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
-  console_bars:
-    dependency: transitive
-    description:
-      name: console_bars
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -74,6 +67,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  get:
+    dependency: transitive
+    description:
+      name: get
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.6.5"
   getx_translator:
     dependency: "direct main"
     description:
