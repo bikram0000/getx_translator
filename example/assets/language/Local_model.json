@@ -1,0 +1,18 @@
+[
+  {
+    "title": "English",
+    "title2": "English",
+    "language_code": "EN",
+    "country_code": "US",
+    "local": "en_us",
+    "file_name": "en_us.json"
+  },
+  {
+    "title": "Hindi",
+    "title2": "Hindi",
+    "language_code": "HI",
+    "country_code": "IN",
+    "local": "hi_in",
+    "file_name": "hi.json"
+  }
+]
