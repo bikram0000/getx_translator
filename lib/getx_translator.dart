@@ -84,8 +84,6 @@ class GetxTranslator {
     }
   }
 
-
-
   ///remove old unused key...
   remove(List<String> arguments) async {
     loadKeys(arguments);
@@ -257,13 +255,16 @@ class GetxTranslator {
             }
             if (data.isNotEmpty) {
               await languageFile[index].writeAsString(
-                  '"$key":"${data.replaceAll('\$ s', '\$s')}",',
+                  '"$key":"${data.replaceAll('\$ s', '\$s').replaceAll('"', '\\"')}"',
                   mode: FileMode.writeOnlyAppend);
             }
             //ending...
             if (rowIndex == allData.length - 1) {
               await languageFile[index]
                   .writeAsString('}', mode: FileMode.writeOnlyAppend);
+            } else {
+              await languageFile[index]
+                  .writeAsString(',', mode: FileMode.writeOnlyAppend);
             }
           }
           index++;
