@@ -6,3 +6,8 @@
 
 - Local model added to sheet.
 - Added example sheet link
+
+## 1.0.2
+
+- regex change for better result
+- other bug fixing

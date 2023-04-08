@@ -526,6 +526,8 @@ class GetxTranslator {
     if ((map as Map)['status'] == 'success'.toUpperCase()) {
       return List<List<String>>.from(
           map['data'].map<List<String>>((e) => List<String>.from(e)));
+    } else {
+      logger.e('[GETX_TRANSLATOR] Processing File .. $map');
     }
 
     return [];
