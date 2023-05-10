@@ -387,7 +387,7 @@ class GetxTranslator {
         File file = File(entity.path);
         var s = await file.readAsString();
         RegExp regExp = RegExp(
-          "([']|[\"])(.+?)([']|[\"])(\n(?:.*))?.tr",
+          "(?!{)([\"'])([^,\"']+?)\\1(\n|\\s)?.(?:tr|trArgs)(?![a-zA-Z0-9_])",
         );
         var string = regExp.allMatches(s);
         for (var element in string) {
