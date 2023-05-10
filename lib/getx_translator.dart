@@ -331,8 +331,6 @@ class GetxTranslator {
           row: int.parse(keys['row'] ?? '1'),
           sheetId: keys['sheet_id']!,
           sheetName: keys['sheet_name']!);
-
-
       sheetData.removeAt(0); //first will remove that key name
       sheetData.removeAt(0); // it will remove the model name from key row..
       for (var element in sheetData) {
@@ -389,7 +387,7 @@ class GetxTranslator {
         File file = File(entity.path);
         var s = await file.readAsString();
         RegExp regExp = RegExp(
-          "(?!{)([\"'])([^,\"']+?)\\1(\n|\\s)?.(?:tr|trArgs)(?![a-zA-Z0-9_])",
+          "([']|[\"])(.+?)([']|[\"])(\n(?:.*))?.tr",
         );
         var string = regExp.allMatches(s);
         for (var element in string) {
@@ -525,13 +523,9 @@ class GetxTranslator {
       Uri.parse(url),
     );
     var map = jsonDecode(response.body);
-
     if ((map as Map)['status'] == 'success'.toUpperCase()) {
       return List<List<String>>.from(
           map['data'].map<List<String>>((e) => List<String>.from(e)));
-    }else{
-      logger.i(
-          '[GETX_TRANSLATOR] Getting keys from local directory.. $map');
     }
 
     return [];
