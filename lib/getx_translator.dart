@@ -255,7 +255,7 @@ class GetxTranslator {
             }
             if (data.isNotEmpty) {
               await languageFile[index].writeAsString(
-                  '"$key":"${data.replaceAll('\$ s', '\$s').replaceAll('"', '\\"')}"',
+                  '"$key":"${data.replaceAll('\$ s', '\$s').replaceAll('"', '\\"').replaceAll("\n", "\\n")}"',
                   mode: FileMode.writeOnlyAppend);
             }
             //ending...
@@ -331,6 +331,8 @@ class GetxTranslator {
           row: int.parse(keys['row'] ?? '1'),
           sheetId: keys['sheet_id']!,
           sheetName: keys['sheet_name']!);
+
+
       sheetData.removeAt(0); //first will remove that key name
       sheetData.removeAt(0); // it will remove the model name from key row..
       for (var element in sheetData) {
@@ -523,9 +525,13 @@ class GetxTranslator {
       Uri.parse(url),
     );
     var map = jsonDecode(response.body);
+
     if ((map as Map)['status'] == 'success'.toUpperCase()) {
       return List<List<String>>.from(
           map['data'].map<List<String>>((e) => List<String>.from(e)));
+    }else{
+      logger.i(
+          '[GETX_TRANSLATOR] Getting keys from local directory.. $map');
     }
 
     return [];
