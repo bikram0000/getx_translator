@@ -11,3 +11,8 @@
 
 - regex change for better result
 - other bug fixing
+
+## 1.0.3
+
+- regex change for better result
+- other bug fixing

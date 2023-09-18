@@ -1,6 +1,6 @@
 name: getx_translator
 description: For generating language strings file for Flutter. Easy translation with google sheet.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/bikram0000/getx_translator
 repository: https://github.com/bikram0000/getx_translator
 
@@ -8,10 +8,10 @@ environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies:
-  http: ^0.13.5
-  yaml: ^3.1.1
-  args: ^2.3.1
-  logger: ^1.1.0
+  http: ^1.1.0
+  yaml: ^3.1.2
+  args: ^2.4.2
+  logger: ^2.0.2
 
 
 dev_dependencies:
