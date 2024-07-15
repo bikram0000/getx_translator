@@ -255,7 +255,8 @@ class GetxTranslator {
             }
             if (data.isNotEmpty) {
               await languageFile[index].writeAsString(
-                  '"$key":"${data.replaceAll('\$ s', '\$s').replaceAll('"', '\\"').replaceAll("\n", "\\n")}"',
+                  '"$key":"${data.replaceAll('\$ s', '\$s').replaceAll(
+                      '"', '\\"').replaceAll("\n", "\\n")}"',
                   mode: FileMode.writeOnlyAppend);
             }
             //ending...
@@ -317,7 +318,8 @@ class GetxTranslator {
       }
     } else {
       logger.i(
-          '[GETX_TRANSLATOR] Uploading New Keys to local directory .. ${directory.path}/${keys['key_name']}.json');
+          '[GETX_TRANSLATOR] Uploading New Keys to local directory .. ${directory
+              .path}/${keys['key_name']}.json');
       await uploadToLocalJson();
     }
   }
@@ -338,7 +340,8 @@ class GetxTranslator {
       }
     } else {
       logger.i(
-          '[GETX_TRANSLATOR] Getting keys from local directory.. ${directory.path}/${keys['key_name']}.json');
+          '[GETX_TRANSLATOR] Getting keys from local directory.. ${directory
+              .path}/${keys['key_name']}.json');
       oldData = await getKeyFromLocal();
     }
   }
@@ -385,21 +388,29 @@ class GetxTranslator {
       if (type == FileSystemEntityType.file) {
         logger.i('[GETX_TRANSLATOR] Processing File .. ${entity.path}');
         File file = File(entity.path);
-        var s = await file.readAsString();
-        RegExp regExp = RegExp(
-          "(?!{)([\"'])([^,\"']+?)\\1(\n|\\s)?.(?:tr|trArgs)(?![a-zA-Z0-9_])",
-        );
-        var string = regExp.allMatches(s);
-        for (var element in string) {
-          if (element.group(2) != null) {
-            if (shouldAll) {
-              allData.add(element.group(2)!);
-            }
-            if (!oldData.contains(element.group(2)) &&
-                !data.contains(element.group(2))) {
-              logger
-                  .i('[GETX_TRANSLATOR] Found String .. [${element.group(2)}]');
-              data.add(element.group(2)!);
+        String? s;
+        try {
+          s = await file.readAsString();
+        } catch (e) {
+
+        }
+        if (s != null) {
+          RegExp regExp = RegExp(
+            "(?!{)([\"'])([^,\"']+?)\\1(\n|\\s)?.(?:tr|trArgs)(?![a-zA-Z0-9_])",
+          );
+          var string = regExp.allMatches(s);
+          for (var element in string) {
+            if (element.group(2) != null) {
+              if (shouldAll) {
+                allData.add(element.group(2)!);
+              }
+              if (!oldData.contains(element.group(2)) &&
+                  !data.contains(element.group(2))) {
+                logger
+                    .i(
+                    '[GETX_TRANSLATOR] Found String .. [${element.group(2)}]');
+                data.add(element.group(2)!);
+              }
             }
           }
         }
@@ -428,7 +439,7 @@ class GetxTranslator {
     }
     final Map<String, String> config = <String, String>{};
     for (MapEntry<dynamic, dynamic> entry
-        in yamlMap['getx_translator'].entries) {
+    in yamlMap['getx_translator'].entries) {
       config[entry.key] = entry.value.toString();
     }
 
@@ -470,7 +481,7 @@ class GetxTranslator {
       logger.i('[GETX_TRANSLATOR] Removing old unused keys from local ...');
       Directory dir = Directory(keys['output_path']!);
       var lister =
-          await dir.list(recursive: false, followLinks: false).toList();
+      await dir.list(recursive: false, followLinks: false).toList();
       await Future.forEach<FileSystemEntity>(lister, (entity) async {
         FileSystemEntityType type = await FileSystemEntity.type(entity.path);
         if (type == FileSystemEntityType.file) {
@@ -486,7 +497,7 @@ class GetxTranslator {
           } else {
             //if it is not a key file means map..
             Map<String, String> keyFile =
-                Map<String, String>.from(jsonDecode(s));
+            Map<String, String>.from(jsonDecode(s));
             for (var element in deletingRowStr) {
               keyFile.remove(element);
             }
@@ -509,7 +520,7 @@ class GetxTranslator {
     String? all,
   }) async {
     url =
-        '$url?column=$column&row=$row&spreadsheetId=$sheetId&sheetName=$sheetName';
+    '$url?column=$column&row=$row&spreadsheetId=$sheetId&sheetName=$sheetName';
     if (columnNumbers != null) {
       url = '$url&columnNumbers=$columnNumbers';
     }
